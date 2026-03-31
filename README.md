@@ -137,15 +137,56 @@ ai-marketing-skills/
 
 ---
 
+## 🔒 Privacy & Security
+
+Every skill is built with data privacy in mind:
+
+- **PII Sanitizer** scans code and data for sensitive information before commits (`security/sanitizer.py`)
+- **Pre-commit hook** blocks commits containing detected PII patterns
+- **Configurable blocklists** for company names, person names, and custom patterns
+- See [`security/README.md`](./security/README.md) for setup
+
+```bash
+# Scan for sensitive data
+python3 security/sanitizer.py --scan --dir . --recursive
+
+# Install the pre-commit hook
+cp security/pre-commit-hook.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+```
+
+---
+
+## 📡 Telemetry (Opt-In)
+
+Anonymous usage telemetry helps us understand which skills people actually use. Fully opt-in, privacy-first:
+
+- **Local logging always** — see your own usage stats in `~/.ai-marketing-skills/analytics/`
+- **Remote reporting optional** — only if you explicitly opt in on first run
+- **Data collected:** skill name, duration, success/fail, version, OS. Nothing else. No code, no file paths, no repo content.
+- **Version checks** — get notified when new skills are available
+
+```bash
+# View your local usage stats
+python3 telemetry/telemetry_report.py
+
+# Check for updates
+python3 telemetry/version_check.py
+```
+
+See [`telemetry/README.md`](./telemetry/README.md) for details.
+
+---
+
 ## 🤝 Contributing
 
-Found a bug? Have an improvement? PRs welcome.
+Found a bug? Have an improvement? PRs welcome. Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) for guidelines.
 
 1. Fork the repo
 2. Create your feature branch (`git checkout -b feature/better-scoring`)
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+3. Run `python3 security/sanitizer.py --scan` before committing
+4. Commit your changes
+5. Push to the branch
+6. Open a Pull Request
 
 ---
 
