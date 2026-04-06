@@ -34,7 +34,7 @@ Each skill category has its own README with setup instructions. The general patt
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/singlegrain/ai-marketing-skills.git
+git clone https://github.com/ericosiu/ai-marketing-skills.git
 cd ai-marketing-skills
 
 # 2. Pick a category
